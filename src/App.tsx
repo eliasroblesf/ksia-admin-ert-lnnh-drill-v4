@@ -968,14 +968,19 @@ Total Duration: ${formatDuration(overallEvaluation.totalReadingSeconds + overall
                 </div>
               </div>
 
-              {/* Quick Scenario Reminder Card */}
+              {/* Quick Scenario Reminder Card with Scene Photo */}
               <details className="rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-700">
                 <summary className="font-bold cursor-pointer select-none text-slate-800 flex items-center justify-between">
-                  <span>{lang === 'ar' ? 'عرض تفاصيل الحادث للمراجعة' : 'View Incident Details'}</span>
+                  <span>{lang === 'ar' ? 'عرض تفاصيل الحادث وصورة الموقع للمراجعة' : 'View Incident Details & Scene Photo'}</span>
                   <span className="text-[11px] text-teal-700">Tap to expand</span>
                 </summary>
-                <div className="mt-2 pt-2 border-t border-slate-100 space-y-2">
-                  <p className="leading-relaxed text-slate-600">
+                <div className="mt-2.5 pt-2.5 border-t border-slate-100 space-y-2.5">
+                  <ScenarioIllustration
+                    scenarioId={currentScenario.id}
+                    isArabic={lang === 'ar'}
+                    className="w-full"
+                  />
+                  <p className="leading-relaxed text-slate-700 font-medium">
                     {lang === 'ar' ? currentScenario.scenarioTextAr : currentScenario.scenarioText}
                   </p>
                 </div>
@@ -1411,7 +1416,12 @@ Total Duration: ${formatDuration(overallEvaluation.totalReadingSeconds + overall
                         </div>
                       </summary>
 
-                      <div className="mt-3 pt-3 border-t border-slate-200 space-y-2">
+                      <div className="mt-3 pt-3 border-t border-slate-200 space-y-2.5">
+                        <ScenarioIllustration
+                          scenarioId={res.scenario.id}
+                          isArabic={lang === 'ar'}
+                          className="w-full mb-2"
+                        />
                         {res.items.map((item) => (
                           <div 
                             key={item.field}
